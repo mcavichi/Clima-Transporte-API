@@ -1,0 +1,22 @@
+.UvIndexContainer {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #50CEF5;
+    width: 150px;
+    height: 100px;
+    padding: 20px;
+    border-radius: 1%;
+    border-color: antiquewhite;
+    border-style: solid;
+    margin: 5px;
+}
+
+.UvIndexIcon {
+    height: 80px;
+    width: 80px;
+}
+
+.UvIndexText {
+    margin: 0 0;
+}

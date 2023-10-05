@@ -1,0 +1,23 @@
+.SSContainer {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #50CEF5;
+    width: 150px;
+    height: 100px;
+    padding: 20px;
+    border-radius: 1%;
+    border-color: antiquewhite;
+    border-style: solid;
+    margin: 5px;
+}
+
+
+.SSIcon {
+    height: 80px;
+    width: 80px;
+}
+
+.SSText {
+    margin: 0 0;
+}

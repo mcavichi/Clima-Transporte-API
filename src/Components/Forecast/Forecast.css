@@ -1,0 +1,29 @@
+.ForecastContainer {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #50CEF5;
+    width: auto;
+    height: 100px;
+    padding: 20px;
+    border-radius: 1%;
+    border-color: antiquewhite;
+    border-style: solid;
+    margin: 5px;
+}
+
+.ForecastIcon {
+    height: 60px;
+    width: 60px;
+}
+
+.ForecastText {
+    margin: 0 0;
+    font-size: 12px;
+}
+
+.Flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

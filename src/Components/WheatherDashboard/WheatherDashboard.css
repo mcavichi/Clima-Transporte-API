@@ -1,0 +1,27 @@
+.WheatherBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../Images/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 50vh;
+}
+
+.Block {
+    display: block;
+}
+
+.Flex {
+    display: flex;
+}
+
+.Inline {
+    display: inline;
+}
+
+
+
+
+

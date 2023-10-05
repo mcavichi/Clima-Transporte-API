@@ -1,0 +1,25 @@
+.TemperatureContainer {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #50CEF5;
+    width: 200px;
+    height: auto;
+    border-radius: 1%;
+    border-color: antiquewhite;
+    border-style: solid;
+    margin: 5px;
+}
+
+.TemperatureIcon {
+    height: 80px;
+    width: 80px;
+}
+
+.TemperatureText {
+    margin: 0 0;
+}
+
+.City {
+    font-size: 14px;
+}
