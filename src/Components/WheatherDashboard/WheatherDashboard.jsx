@@ -6,8 +6,6 @@ import SunriseSunset from '../SunriseSunset/SunriseSunset';
 import Forecast from '../Forecast/Forecast';
 import UvIndex from '../UvIndex/UvIndex';
 
-
-
 const WheatherDashboard = () => {
 
 
