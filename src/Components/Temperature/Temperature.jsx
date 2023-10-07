@@ -5,6 +5,7 @@ import data from '../../data.json';
 const city = api.timezone
 const currentTemp = api.current_weather.temperature
 const currentDate = api.daily.time
+const currentHour = api.current_weather.time.slice(11,16)
 const dailyMinTemp = api.daily.temperature_2m_min
 const dailyMaxTemp = api.daily.temperature_2m_max
 const icon = data[api.current_weather.weathercode].image_src
@@ -19,7 +20,8 @@ const Temperature= () => {
                     <img className='TemperatureIcon' src={icon} alt='icon'></img>
                     <p className='TemperatureText'>{text}</p>
                     <p className='TemperatureText'>Temperatura: {currentTemp}ºC</p><br/>
-                    <p className='TemperatureText'>Fecha:<br/> {currentDate}</p>
+                    <p className='TemperatureText'>Fecha: {currentDate}</p>
+                    <p className='TemperatureText'>Hora: {currentHour}</p>
                     <div>
                         <p>Min: {dailyMinTemp} | Max: {dailyMaxTemp}</p>
                     </div>
