@@ -1,50 +1,42 @@
 import './Forecast.css';
+// import api from '../../api.json';
+import { LineChart } from '@mui/x-charts/LineChart';
 
-const Forecast = () => {
+// const temp = api['hourly']['temperature_2m']
+// const hour = api['hourly']['time']
+
+const Forecast = (props) => {
+    const chartTheme = {
+        palette: {
+            primary: {
+                main: '#FF8000', // Change the color of the chart area here
+            },
+        },
+    };
     return (
         <div className="ForecastContainer">
             <div>
                 <h4 className='ForecastText'>Forecast</h4>
             </div>
-            <div className='Flex'>
-                <div>
-                    <p className='ForecastText'>Lunes</p>
-                    <img className='ForecastIcon' src='https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg' ></img>
-                    <div>
-                        <p className='ForecastText'>Min: 15°C  |  Max: 25°C</p>
-                    </div>
-                </div>
-                <div>
-                    <p className='ForecastText'>Martes</p>
-                    <img className='ForecastIcon' src='https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg' ></img>
-                    <div>
-                        <p className='ForecastText'>Min: 15°C  |  Max: 25°C</p>
-                    </div>
-                </div>
-                <div>
-                    <p className='ForecastText'>Miercoles</p>
-                    <img className='ForecastIcon' src='https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg' ></img>
-                    <div>
-                        <p className='ForecastText'>Min: 15°C  |  Max: 25°C</p>
-                    </div>
-                </div>
-                <div>
-                    <p className='ForecastText'>Jueves</p>
-                    <img className='ForecastIcon' src='https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg' ></img>
-                    <div>
-                        <p className='ForecastText'>Min: 15°C  |  Max: 25°C</p>
-                    </div>
-                </div>
-                <div>
-                    <p className='ForecastText'>Viernes</p>
-                    <img className='ForecastIcon' src='https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg' ></img>
-                    <div>
-                        <p className='ForecastText'>Min: 15°C  |  Max: 25°C</p>
-                    </div>
-                </div>
+            <div className='Flex' style={{ width: '100%', height: '15px' }}>
+                <LineChart 
+                    xAxis={[{ data: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23] }]}
+                    series={[
+                        {
+                        data: props.Temp,
+                        area: true,
+                        },
+                    ]}
+                    width={800}
+                    height={250}
+                    xAxisLabel="Hora"
+                    yAxisLabel="Temperatura"
+                    theme={chartTheme}
+                />
             </div>
         </div>
         )
 }
 
 export default Forecast;
+

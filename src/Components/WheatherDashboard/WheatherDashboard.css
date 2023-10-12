@@ -9,6 +9,19 @@
     height: 50vh;
 }
 
+.Container {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #50CEF5;
+    width: 200px;
+    height: auto;
+    border-radius: 1%;
+    border-color: antiquewhite;
+    border-style: solid;
+    margin: 5px;
+}
+
 .Block {
     display: block;
 }
