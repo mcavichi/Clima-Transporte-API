@@ -2,6 +2,8 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 import WheatherDashboard from './Components/WheatherDashboard/WheatherDashboard';
 import TransportDashboard from './Components/Transport/TransportDashboard';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 function App() {
   const [weatherdata, setWeatherdata] = useState(null);
@@ -22,7 +24,12 @@ function App() {
   
   if (loading) {
     return (
-      <h1>Cargando</h1>
+      <div>
+        <Box className='Flex' sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
+        <p className='Flex'>Cargando...</p>
+      </div>
     )
   }
 
