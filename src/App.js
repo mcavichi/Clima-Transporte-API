@@ -5,7 +5,9 @@ import TransportDashboard from './Components/Transport/TransportDashboard';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
+
 function App() {
+  
   const [weatherdata, setWeatherdata] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -33,11 +35,11 @@ function App() {
     )
   }
 
+  
   return (
     <div className="App">
-      <WheatherDashboard weatherdata ={weatherdata}/>
-      <TransportDashboard />
-
+      <WheatherDashboard weatherdata={weatherdata}/>
+      <TransportDashboard/>
     </div>
   );
 }

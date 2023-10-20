@@ -15,23 +15,6 @@ import CurrentHour from '../CurrentHour/CurrentHour';
 import MinMaxTemp from '../MinMaxTemp/MinMaxTemp';
 
 
-// const city = api.timezone
-// const icon = data[weatherdata.current_weather.weathercode].image_src
-// const currentTemp = api.current_weather.temperature
-// const currentStatus = data[api.current_weather.weathercode].name
-// const currentDate = api.daily.time
-// const currentHour = api.current_weather.time.slice(11,16)
-// const dailyMinTemp = api.daily.temperature_2m_min
-// const dailyMaxTemp = api.daily.temperature_2m_max
-// const dailyUvIndexMax = api.daily.uv_index_max
-// const currentHumidity = api.hourly.relativehumidity_2m[20]
-// const currentWindSpeed = api.current_weather.windspeed
-// const dailySunrise = api.daily.sunrise[0].slice(11,16)
-// const dailySunset = api.daily.sunset[0].slice(11,16)
-// const temp = api['hourly']['temperature_2m']
-// const hour = api['hourly']['time']
-
-
 const WheatherDashboard = ({weatherdata}) => {
   const icon = data[weatherdata.current_weather.weathercode].image_src
   const currentStatus = data[weatherdata.current_weather.weathercode].name
