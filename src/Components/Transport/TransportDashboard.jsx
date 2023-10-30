@@ -13,7 +13,7 @@ const TransportDashboard = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6')
+    fetch('https://apitransporte.buenosaires.gob.ar/colectivos/vehiclePositionsSimple?&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6')
       .then(resp => resp.json()
       ).then(data => {
         console.log(data)
@@ -36,9 +36,13 @@ const TransportDashboard = () => {
   }
 
   return (
-    <div className="TransportBackground">
+    <div>
+      <div className="TransportBackground">
         <Mapa transportdata={transportdata}/>
+      </div>
     </div>
+
+
   )
 }
 

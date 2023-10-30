@@ -1,35 +1,85 @@
-import { MapContainer } from 'react-leaflet/MapContainer'
-import { TileLayer } from 'react-leaflet/TileLayer'
-import { Marker, Popup } from 'react-leaflet'
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
-// import api2 from '../../api2.json';
 
-// const position = [-34.599722222222, -58.381944444444]
 
-const Mapa = ({transportdata}) => {
+const Mapa = ({ transportdata }) => {
+    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedMarker, setSelectedMarker] = useState(null);
+    const [mapCenter, setMapCenter] = useState([-34.599722222222, -58.381944444444]);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleChange = (event) => {
+        setSelectedOption(event.target.value);
+        };
+    
+    const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+    };
+    
+    useEffect(() => {
+    const marker = transportdata.find(
+        (e) => e['route_short_name'] === selectedOption
+    );
+    setSelectedMarker(marker);
+    if (marker) {
+        setMapCenter([marker['latitude'], marker['longitude']]);
+    } else {
+        setMapCenter([-34.599722222222, -58.381944444444]);
+    }
+    }, [selectedOption, transportdata]);
+
+    const sortedRoutes = Array.from(
+    new Set(transportdata.map((e) => e['route_short_name']))
+    ).sort();
+
+    const filteredRoutes = sortedRoutes.filter((route) =>
+    route.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
-        <div>
-            <MapContainer classname='leaflet-container' center={[-34.599722222222, -58.381944444444]} zoom={8} scrollWheelZoom={true}>
-                <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {transportdata.map((e) => {
-                    return (
-                    <Marker position={[e['latitude'], e['longitude']]}>
-                        <Popup>
-                            <p>Empresa: {e['agency_name']}</p>
-                            <p>Linea: {e['route_short_name']}</p>
-                            <p>Interno: {e['id']}</p>
-                            <p>Destino: {e['trip_headsign']}</p>
-                        </Popup>
-                    </Marker>
-                    )
-                })}
-            </MapContainer>
-        </div>
-    )
-}
+    <div className="mapa-container">
+        <p>Elija su colectivo: </p>
+        <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearch}
+        placeholder="Buscar número de línea"
+        />
+        <select value={selectedOption} onChange={handleChange}>
+        <option value="">Select a route</option>
+        {filteredRoutes.map((route) => (
+            <option key={route} value={route}>
+            {route}
+            </option>
+        ))}
+        </select>
+        <MapContainer
+            className="leaflet-container"
+            center={mapCenter}
+            zoom={10}
+            scrollWheelZoom={true}
+        >
+            <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {selectedMarker && (
+            <Marker
+                position={[selectedMarker['latitude'], selectedMarker['longitude']]}
+                key={selectedMarker['id']}
+            >
+                <Popup>
+                <p>Empresa: {selectedMarker['agency_name']}</p>
+                <p>Linea: {selectedMarker['route_short_name']}</p>
+                <p>Interno: {selectedMarker['id']}</p>
+                <p>Destino: {selectedMarker['trip_headsign']}</p>
+                </Popup>
+            </Marker>
+            )}
+        </MapContainer>
+    </div>
+    );
+};
 
 export default Mapa;
