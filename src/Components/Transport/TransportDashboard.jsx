@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 
 const TransportDashboard = () => {
 
-
   const [transportdata, setTransportdata] = useState(null);
   const [loading, setLoading] = useState(true);
 

@@ -1,4 +1,15 @@
 .leaflet-container {
-    width: 100vw; 
-    height: 50vh;
+    width: 95vw; 
+    height: 35vh;
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown {
+    display: block;
 }

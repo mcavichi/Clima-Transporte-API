@@ -3,11 +3,15 @@
     justify-content: center;
     align-items: center;
     background: whitesmoke;
-    width: 100vw;
-    height: 50vh
 }
 
 .container {
     width: 100vw; 
     height: 50vh;
+}
+
+.Flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
