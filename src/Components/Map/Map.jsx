@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Map.css';
 
 
-const Mapa = ({ transportdata }) => {
+const Mapa = ({transportdata, onSelectedOptionChange}) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [selectedMarker, setSelectedMarker] = useState(null);
     const [mapCenter, setMapCenter] = useState([-34.599722222222, -58.381944444444]);
@@ -11,8 +11,10 @@ const Mapa = ({ transportdata }) => {
 
 
     const handleChange = (event) => {
-        setSelectedOption(event.target.value);
-        };
+        const option = event.target.value;
+        setSelectedOption(option);
+        onSelectedOptionChange(option);
+    };
     
     const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -30,9 +32,7 @@ const Mapa = ({ transportdata }) => {
     }
     }, [selectedOption, transportdata]);
 
-    const sortedRoutes = Array.from(
-    new Set(transportdata.map((e) => e['route_short_name']))
-    ).sort();
+    const sortedRoutes = [...new Set(transportdata.map(e => e['route_short_name']))].sort();
 
     const filteredRoutes = sortedRoutes.filter((route) =>
     route.toLowerCase().includes(searchTerm.toLowerCase())
@@ -47,7 +47,7 @@ const Mapa = ({ transportdata }) => {
             type="text"
             value={searchTerm}
             onChange={handleSearch}
-            placeholder='Buscar número de línea'
+            placeholder="Buscar número de línea"
             />
             <select value={selectedOption} onChange={handleChange}>
             <option value="">Elija una opción</option>
